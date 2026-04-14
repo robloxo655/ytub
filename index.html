@@ -1,0 +1,847 @@
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><!-- base href="https://1866295187-atari-embeds.googleusercontent.com/embeds/16cb204cf3a9d4d223a0a3fd8b0eec5d/inner-frame-minified.html?jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.en.2kN9-TZiXrM.O%2Fd%3D1%2Frs%3DAHpOoo_B4hu0FeWRuWHfxnZ3V0WubwN7Qw%2Fm%3D__features__" -->
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Norepted - Kirby Edition</title>
+    <script async="" src="Norepted%20-%20Kirby%20Edition_files/google-analytics_analytics_002.js"></script><script src="Norepted%20-%20Kirby%20Edition_files/3.4.17"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="Norepted%20-%20Kirby%20Edition_files/css2.css" rel="stylesheet">
+    
+    <style>
+        /* --- THEME & CORE STYLES (Kirby Theme) --- */
+        :root {
+            --bg-color: #c2e9fb; /* Light Sky Blue */
+            --text-color: #6D455D; /* Dark Pink-Brown for text */
+            --primary-accent: #F472B6; /* Kirby Pink */
+            --glow-color: rgba(244, 114, 182, 0.5); /* Pink Glow */
+            --glass-bg: rgba(255, 255, 255, 0.5); /* Semi-transparent White (Cloud) */
+            --glass-border: rgba(255, 255, 255, 0.3); /* Light White Border */
+            
+            --font-main: 'Roboto Mono', monospace;
+            --font-display: 'Nunito', sans-serif; /* Changed to Nunito */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-display); /* Changed default to softer font */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        /* Base Button Styling */
+        .btn-base {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.75rem;
+            background-color: transparent; /* Controlled by pseudo-elements */
+            color: #FFFFFF; /* White text on buttons */
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Softer shadow */
+            box-shadow: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-family: var(--font-display); /* Bubbly font for buttons */
+            position: relative;
+            overflow: hidden;
+            border: none;
+            outline: none;
+            z-index: 1; 
+        }
+
+        .btn-base::before { /* Background Layer - Replaced Carbon Fiber */
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            /* Default button color: Kirby Pink */
+            background-color: var(--primary-accent); 
+            /* REMOVED carbon fiber background-image */
+            border-radius: inherit; 
+            transition: background-color 0.3s ease;
+            z-index: -2;
+        }
+        
+        .btn-base::after { /* Inner Glow Layer */
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            /* Brighter white glow */
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.6) 0%, transparent 70%);
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn-base .glint { /* Glint effect - changed to white/pink */
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 80%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 100%);
+            transform: skewX(-25deg);
+            transition: left 0.7s ease-in-out;
+        }
+
+        .btn-base:hover {
+            box-shadow: 0 4px 8px var(--glow-color); /* Pink shadow */
+            color: #FFFFFF; /* Keep text white */
+            transform: translateY(-2px);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8); /* White glow */
+        }
+        
+        .btn-base:hover::before {
+            background-color: #E65A8F; /* Darker pink */
+        }
+        
+        .btn-base:hover::after {
+            opacity: 1;
+        }
+
+        .btn-base:hover .glint {
+            left: 150%;
+        }
+
+        .btn-base:active {
+            transform: translateY(0px);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+        }
+
+        /* Specific Button Overrides - Kirby Palette */
+        #launch, #copy {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            padding: 5px 12px;
+        }
+
+        /* LAUNCH = Kirby's Feet Red */
+        #launch::before { background-color: #DC2626; } 
+        #launch:hover::before { background-color: #B91C1C; }
+        #launch:active::before { background-color: #991B1B; }
+
+        /* COPY = Star Yellow */
+        #copy { color: var(--text-color); } /* Dark text on yellow */
+        #copy::before { background-color: #FFD700; } 
+        #copy:hover::before { background-color: #FFC700; }
+        #copy:active::before { background-color: #E6B800; }
+
+        /* ABOUT:BLANK = Sky Blue */
+        #aboutblank { color: var(--text-color); } /* Dark text on blue */
+        #aboutblank::before { background-color: #87CEEB; } 
+        #aboutblank:hover::before { background-color: #76BFE0; }
+        #aboutblank:active::before { background-color: #65A9CC; }
+
+        .size-button {
+            padding: 2px 8px;
+            border-radius: 8px;
+            margin: 0 2px;
+            font-size: 18px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* PLUS = Grass Green */
+        #plus { color: var(--text-color); } /* Dark text on green */
+        #plus::before { background-color: #7CFC00; } 
+        #plus:hover::before { background-color: #6AD500; }
+        #plus:active::before { background-color: #58B000; }
+
+        /* MINUS = Red */
+        #minus::before { background-color: #DC2626; } 
+        #minus:hover::before { background-color: #B91C1C; }
+        #minus:active::before { background-color: #991B1B; }
+
+        /* DEFAULT = Pink */
+        #default::before { background-color: #F472B6; } 
+        #default:hover::before { background-color: #E65A8F; }
+        #default:active::before { background-color: #C44A79; }
+
+        .hide-button, .show-button {
+            padding: 6px 14px;
+            font-size: 16px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        /* HIDE/SHOW = Pink */
+        .hide-button::before, .show-button::before { background-color: #F472B6; } 
+        .hide-button:hover::before, .show-button:hover::before { background-color: #E65A8F; }
+        .hide-button:active::before, .show-button:active::before { background-color: #C44A79; }
+
+
+        /* Input Field Styling */
+        .input-container input {
+            font-family: var(--font-main);
+            /* Opaque white background */
+            background-color: rgba(255, 255, 255, 0.8); 
+            color: var(--text-color); /* Dark pink text */
+            border: 1px solid var(--primary-accent); /* Pink border */
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 16px;
+            border-radius: 15px;
+            padding: 6px 10px;
+            width: 200px;
+            height: 32px;
+            position: relative;
+            transition: 0.2s;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
+            outline: 0;
+
+            &:focus {
+                border: 2px solid #DC2626; /* Red border on focus */
+                box-shadow: 0 0 7px 0px #DC2626; /* Red glow on focus */
+            }
+        }
+
+        /* Clear Button (inside input-container) */
+        .input-container button {
+            background: transparent;
+            border: none; 
+            margin: 8px;
+            color: #FFFFFF; /* White text */
+            font-size: 16px;
+            border-radius: 10px;
+            padding: 5px 10px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .input-container button::before { /* Replaced Carbon Fiber */
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: #DC2626; /* Red for clear button */
+            /* REMOVED background-image */
+            border-radius: inherit;
+            transition: background-color 0.3s ease;
+            z-index: -2;
+        }
+        .input-container button::after { /* Inner Glow Effect */
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.5) 0%, transparent 70%);
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        .input-container button:hover {
+            background-color: transparent;
+            box-shadow: 0 2px 5px rgba(255, 0, 0, 0.5); /* Red glow on hover */
+            color: #FFFFFF;
+        }
+        .input-container button:hover::before { background-color: #B91C1C; } /* Darker red */
+        .input-container button:hover::after { opacity: 1; }
+        .input-container button:active {
+            transform: translateY(0px);
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.4);
+        }
+
+
+        ::placeholder {
+            color: rgba(109, 69, 93, 0.7); /* Semi-transparent dark pink */
+            font-size: 16px; 
+            text-align: center;
+            font-family: var(--font-display);
+        }
+
+        /* Headings */
+        h1, h3, h4, h5, h6 {
+            text-align: center;
+            font-family: var(--font-display);
+            color: var(--text-color); /* Dark pink text */
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* White glow */
+        }
+
+        #title {
+            color: #DC2626; /* Red title */
+            font-family: var(--font-display);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
+        }
+
+        #footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        #footer a,
+        #footer img {
+            margin: 0 15px;
+            width: 100px;
+            height: auto;
+        }
+
+        #more_info {
+            display: none; 
+        }
+
+        .container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0px auto;
+        }
+
+        iframe {
+            display: block;
+            margin: 0 auto;
+            /* Pink glow shadow */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), 0 0 15px var(--glow-color);
+            border-radius: 0.75rem; 
+        }
+
+        #tip {
+            color: #547AFF; /* Kirby-eye Blue */
+            font-family: var(--font-main);
+            text-shadow: 0 0 5px rgba(84, 122, 255, 0.7);
+        }
+
+        #condition {
+            color: #DC2626; /* Kirby Red */
+            text-align: center;
+            font-size: 18px;
+            font-family: var(--font-main);
+            text-shadow: 0 0 5px rgba(220, 38, 38, 0.7);
+        }
+
+        #seperator {
+            text-align: center;
+            font-size: 30px;
+            color: var(--text-color);
+            opacity: 0.5;
+        }
+
+        #copy_tip {
+            font-family: var(--font-main);
+            color: #FF00FF; /* Magenta */
+            text-shadow: 0 0 5px rgba(255, 0, 255, 0.7);
+        }
+
+        /* Header Navigation */
+        nav {
+            padding: 4px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 10000px;
+            overflow: hidden;
+            align-items: center;
+            background: var(--glass-bg); /* Glassmorphism (cloud) */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.2);
+            position: relative;
+            margin: 0 auto;
+            transition: 0.1s;
+            display: flex;
+            justify-content: center;
+        }
+
+        .heading {
+            color: var(--text-color); /* Dark pink */
+            text-transform: uppercase;
+            font-size: 20px;
+            font-family: var(--font-display);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        }
+
+        .headinglink {
+            font-family: var(--font-display);
+            color: var(--text-color); /* Dark pink */
+            text-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+            letter-spacing: 2px;
+            font-size: 35px;
+            font-weight: 800;
+            text-align: center;
+            text-decoration: none;
+            transition: .2s;
+            background: none;
+            position: relative;
+            border: none;
+            padding: 2px 13px; 
+            border-radius: 0.75rem; 
+            z-index: 1;
+        }
+        .headinglink::before { /* Replaced Carbon Fiber */
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-color: #FFFACD; /* Light Yellow (Star) */
+            /* REMOVED background-image */
+            border-radius: inherit;
+            transition: background-color 0.3s ease;
+            z-index: -2;
+        }
+        .headinglink::after { /* Inner Glow Effect */
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        .headinglink:hover {
+            background-color: transparent; 
+            transform: translateY(-1px);
+        }
+        .headinglink:hover::before { background-color: #FFFFE0; } /* Lighter Yellow */
+        .headinglink:hover::after { opacity: 1; }
+        .headinglink:active {
+            transform: translateY(0);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.4);
+        }
+
+
+        .animbutton {
+            font-family: var(--font-main);
+            border-radius: 0.75rem; 
+            margin: 0 5px;
+        }
+
+        .homebutton {
+            font-family: var(--font-main);
+            border-radius: 0.75rem; 
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            z-index: -1;
+        }
+
+        /* Fade in animations (kept as is) */
+        .fade-in{
+            opacity: 0;
+            transition: opacity 0.65s ease-in;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+        }
+
+        /* Visitor Counter Styling (to make it blend better) */
+        #footer .visitor-counter svg {
+            fill: var(--text-color); 
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+        }
+        #footer .visitor-counter text {
+            fill: var(--text-color) !important; 
+        }
+        #footer .counterimg {
+            /* Kept filter, but it might look better without it on a light bg */
+            /* filter: grayscale(100%) brightness(150%); */
+            opacity: 0.7;
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.mb-0{margin-bottom:0px}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-8{margin-bottom:2rem}.ml-2{margin-left:0.5rem}.mr-2{margin-right:0.5rem}.mt-2{margin-top:0.5rem}.mt-4{margin-top:1rem}.mt-8{margin-top:2rem}.block{display:block}.flex{display:flex}.min-h-screen{min-height:100vh}.max-w-xl{max-width:36rem}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-center{justify-content:center}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-gray-700{--tw-border-opacity:1;border-color:rgb(55 65 81 / var(--tw-border-opacity, 1))}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-4{padding-left:1rem;padding-right:1rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.text-center{text-align:center}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-5xl{font-size:3rem;line-height:1}.text-base{font-size:1rem;line-height:1.5rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-bold{font-weight:700}.font-normal{font-weight:400}.font-semibold{font-weight:600}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-pink-600{--tw-text-opacity:1;color:rgb(219 39 119 / var(--tw-text-opacity, 1))}.text-red-600{--tw-text-opacity:1;color:rgb(220 38 38 / var(--tw-text-opacity, 1))}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:text-red-600:hover{--tw-text-opacity:1;color:rgb(220 38 38 / var(--tw-text-opacity, 1))}</style></head>
+<body class="flex flex-col items-center justify-center min-h-screen p-4">
+    <script type="text/javascript" async="" src="Norepted%20-%20Kirby%20Edition_files/google-analytics_analytics_003.js"></script><script async="" src="Norepted%20-%20Kirby%20Edition_files/google-analytics_analytics_002.js"></script><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-56W5VNZD');</script>
+    <script async="" src="Norepted%20-%20Kirby%20Edition_files/google-analytics_analytics.js"></script><script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-ZQCTP11KMS');
+    </script>
+
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-56W5VNZD"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <div id="particles-js"><canvas class="particles-js-canvas-el" style="width: 100%; height: 100%;" width="2087" height="906"></canvas></div>
+    
+    <nav class="rounded-2xl shadow-lg mb-8">
+        <div class="heading fade-in">
+            <button onclick="home()" class="headinglink fade-in"> Norepted vD.L</button>
+        </div>
+        <header class="flex justify-center mt-2">
+            <button onclick="home()" class="btn-base animbutton fade-in" disabled="disabled">Home</button>
+            <button onclick="suggestions()" class="btn-base animbutton fade-in">Suggestions</button>
+        </header>
+    </nav>
+
+    <h1 id="title" class="fade-in active text-5xl font-bold mb-4"> Youtube Watcher </h1>
+    
+    <div id="instructions" class="fade-in active rounded-2xl shadow-lg p-6 max-w-xl text-center mb-0" style="background-color: rgba(255,255,255,0.4);"> <h3 class="fade-in active text-xl font-semibold mb-2"> Directions: Paste your youtube video link in the box and press the LAUNCH button.</h3>
+        <h3 class="fade-in active text-xl font-semibold mb-2"> Press - and 0 at once to exit safely and quickly. </h3>
+        <h3 class="fade-in active text-xl font-semibold mb-2"> Press 1 to hide the tab. </h3>
+        <a id="aboutblank-link" onclick="aboutblank()" class="block mt-4"><button id="aboutblank" class="btn-base homebutton fade-in active">Open in about:blank</button></a>
+        <h4 class="fade-in active text-base font-normal mt-4" id="copy_tip"> To save a video, press the "COPY" button and bookmark the copied link. </h4>
+        <h4 class="fade-in active text-base font-normal mt-2" id="tip"> Shortcut: Press 'Enter' on your keyboard to launch faster. </h4>
+        <button class="btn-base hide-button fade-in active mt-4"> Hide Instructions </button>
+    </div>
+    <div>
+        <button class="btn-base show-button">Show Instructions</button>
+    </div>
+    
+    <br>
+    <div class="input-container fade-in active flex justify-center items-center mt-4">
+        <input type="text" id="link" class="fade-in active rounded-full px-4 py-2" placeholder="YouTube link here">
+        <button id="clear-button" class="fade-in btn-base homebutton active ml-2" onclick="document.getElementById('link').value = '';">Clear</button>
+    </div>
+    <br>
+    <button class="fade-in btn-base homebutton active" id="launch" onclick="fix_link()"> LAUNCH <span class="glint"></span></button>
+    <br>
+    <button class="fade-in btn-base homebutton active" id="copy" onclick="copy_link()"> COPY <span class="glint"></span></button>
+    <br>
+    
+    <h3 class="fade-in active text-xl font-semibold mt-4">  </h3>
+    <div class="loading fade-in active" id="loading"></div>
+    <iframe style="display:none;" class="fade-in rounded-xl border border-gray-700 shadow-xl mt-4" id="video" width="650" height="425" frameborder="0" src=" " allowfullscreen=""></iframe>
+
+    <div class="size-controls fade-in flex justify-center items-center mt-4" style="display: none;">
+        <span class="text-gray-600 mr-2">Size:</span>
+        <button class="btn-base size-button" id="minus" onclick="decreaseSize()">-</button>
+        <button class="btn-base size-button" id="plus" onclick="increaseSize()">+</button>
+    </div>
+
+    <br>
+    <div class="fade-in active font-mono text-3xl mt-8" id="seperator">
+        <span> -------------------------------------------------- </span>
+    </div>
+
+    <div id="footer" class="fade-in active mt-8">
+        </div>
+
+    <h5 class="fade-in active text-base font-normal text-gray-700 mt-8" id="socials"> Made by the user <a href="https://codepen.io/weaF_z" target="”_blank”" class="text-pink-600 hover:text-red-600 transition"> WG563 on
+        codepen.io </a>, aka <a href="https://github.com/wea-f" target="”_blank”" class="text-pink-600 hover:text-red-600 transition">wea-f on github </a>, aka <a href="https://replit.com/@wea-F" target="”_blank”" class="text-pink-600 hover:text-red-600 transition"> wea-F on replit </a> <br> FOR MORE INFO AND LICENSE, GO <a href="https://github.com/wea-f/Norepted" target="_blank" class="text-pink-600 hover:text-red-600 transition"> HERE </a> <br>
+        <span class="fade-in text-red-600 font-bold mt-2 block active" id="condition">!!! I am NOT responsible in anyway if you get in trouble related to Norepted,
+        it is YOUR device and YOU control it. !!! </span>
+    </h5>
+            
+    <script src="Norepted%20-%20Kirby%20Edition_files/particles.min.js"></script>
+    <script>
+    function setFavicons(favImg) {
+        let headTitle = document.querySelector("head");
+        let setFavicon = document.createElement("link");
+        setFavicon.setAttribute("rel", "shortcut icon");
+        setFavicon.setAttribute("href", favImg);
+        headTitle.appendChild(setFavicon);
+    }
+
+    // Link Embed
+    function fix_link() {
+        var link = document.getElementById("link").value;
+        const loadingEle = document.getElementById('loading');
+        const video = document.getElementById('video');
+        const sizeControls = document.querySelector('.size-controls');
+
+        loadingEle.style.display = "inline";
+        // Simple regex to extract YouTube video ID
+        var video_id = link.replace(/^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu.be\/)([\w-]+).*$/, "$1");
+
+        var final_link = "https://www.youtube-nocookie.com/embed/" + video_id;
+        video.src = final_link;
+
+        video.style.border = "2px solid #F472B6"; /* Pink border */
+        video.style.display = "block"; // Changed to block for iframe
+        video.style.opacity = 1;
+        sizeControls.style.display = 'flex';
+        
+        // Wait for the iframe content to load completely:
+        video.onload = () => {
+            loadingEle.style.display = "none"; // Hide loading after iframe loads
+            adjustIframeHeight();
+        };
+        // Fallback for load event not firing or if already cached
+        setTimeout(() => {
+            if (loadingEle.style.display !== "none") {
+                loadingEle.style.display = "none";
+            }
+        }, 3000); // Hide loading after 3 seconds if not already hidden
+    }
+
+    // Size buttons
+    const video = document.getElementById('video');
+    // Ensure sizeControls is correctly selected as it's outside the iframe
+    const sizeControls = document.querySelector('.size-controls');
+
+    function decreaseSize() {
+        video.style.width = video.offsetWidth * 0.8 + "px";
+        adjustIframeHeight();
+    }
+    function increaseSize() {
+        video.style.width = video.offsetWidth * 1.2 + "px";
+        adjustIframeHeight();
+    }
+            
+    function adjustIframeHeight() {
+        // This will adjust the iframe's height to maintain aspect ratio:
+        // Assuming original aspect ratio is 650x425
+        video.style.height = ((425 / 650) * video.offsetWidth) + 'px';
+    }
+
+    // Hide/Show Instructions
+    const hideButton = document.querySelector('.hide-button');
+    const showButton = document.querySelector('.show-button');
+    const instructionsDiv = document.getElementById('instructions');
+    
+    hideButton.addEventListener('click', () => {
+        instructionsDiv.style.display = 'none';
+        instructionsDiv.classList.remove('active');
+        hideButton.style.display = 'none';
+        
+        showButton.style.display = 'block';
+        showButton.classList.add("active");
+    });
+
+    showButton.addEventListener('click', () => {
+        instructionsDiv.style.display = 'block';
+        instructionsDiv.classList.add('active');
+        showButton.style.display = 'none';
+        hideButton.style.display = 'block';
+        hideButton.classList.add("active");
+    });
+
+    // Shortcuts
+    document.body.onkeyup = function (c) {
+        if (c.key === "Enter" || c.code === "Enter" || c.keyCode === 13) {
+            fix_link();
+        }
+        // exit - using key and keyCode for broader compatibility
+        else if ((c.key === "0" && c.ctrlKey) || (c.keyCode === 48 && c.ctrlKey)) { // Ctrl + 0
+            c.preventDefault();
+            c.stopPropagation();
+            window.location.replace("https://www.google.com/webhp?igu=1");
+        }
+        else if ((c.key === "-" && c.key === "0") || (c.keyCode === 189 && c.keyCode === 48)) { // This condition (key === "-" && key === "0") will never be true
+            c.preventDefault();
+            c.stopPropagation();
+            window.location.replace("https://www.google.com/webhp?igu=1");
+        }
+        // Hide tab
+        else if (c.key === "1" || c.keyCode === 49) { // Key '1'
+            c.preventDefault();
+            c.stopPropagation();
+            document.title = "My Drive - Google Drive";
+            setFavicons("https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png");
+        }
+    }
+
+    // Copy link
+    function copy_link() {
+        var link = document.getElementById("link").value;
+        // Clean up common YouTube URL parameters
+        var video_id = link.replace(/^(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/watch\?v=|youtu.be\/)([\w-]+).*$/, "$1");
+        var final_link = "https://www.youtube-nocookie.com/embed/" + video_id;
+        
+        // Use document.execCommand('copy') for broader compatibility in iframes
+        try {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = final_link;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            // Optional: Show a message to the user that it was copied
+            // showMessage('Link copied to clipboard!'); // Assuming you have a showMessage function
+        } catch (err) {
+            console.error('Failed to copy text: ', err);
+            // showMessage('Failed to copy. Please copy manually.', true);
+        }
+    }
+
+    // About:Blank button loader
+    function aboutblank() {
+        let url = window.location.href;
+        var w = window.open("about:blank", "_blank");
+        w.document.write('<iframe style="position: absolute;top: 0px;bottom: 0px;right: 0px;width: 100%;border: none;margin: 0;padding: 0;overflow: hidden;z-index: 99999;height: 100%;" src="' + url + '"></iframe>');
+        // window.close('', '_parent', ''); // This might close the current tab, which is often not desired
+    }
+
+    // Header Navigation
+    function suggestions() {
+        window.open("https://forms.gle/3TEjjsnqWUXgo5kQ7", '_blank').focus();
+    }
+
+    // Fading in elements when scrolling
+    const fadeInElems = document.querySelectorAll('.fade-in');
+
+    const debounce = (fn) => {
+        let frame;
+        return (...params) => {
+            if (frame) {
+                cancelAnimationFrame(frame);
+            }
+            frame = requestAnimationFrame(() => {
+                fn(...params);
+            });
+        }
+    };
+
+    const handleScroll = debounce(() => {
+        const windowHeight = window.innerHeight;
+        const scrollTop = window.scrollY;
+        const scrollBottom = scrollTop + windowHeight;
+
+        fadeInElems.forEach(elem => {
+            const top = elem.offsetTop;
+            const height = elem.offsetHeight;
+            const bottom = top + height;
+            const isBeforeBottom = bottom - scrollTop > 0;
+            const isAfterTop = top < scrollBottom;
+
+            if (isBeforeBottom && isAfterTop) {
+                elem.classList.add('active');
+            } else {
+                elem.classList.remove('active');
+            }
+        });
+    });
+
+    document.addEventListener('scroll', handleScroll);
+
+
+    //Fade in elements on load
+    fadeInElems.forEach(elem => {
+        const isVisible = (elem.offsetTop - window.scrollY) < window.innerHeight;
+        if (isVisible) {
+            elem.classList.add('active');
+        } else {
+            elem.classList.remove('active');
+        }
+    });
+
+    // Particles.js initialization - KIRBY THEME
+    particlesJS("particles-js", {
+        "particles": {
+            "number": {
+                "value": 80, /* Fewer, larger particles */
+                "density": {
+                    "enable": true,
+                    "value_area": 800
+                }
+            },
+            "color": {
+                /* Array of Kirby colors! */
+                "value": ["#F472B6", "#DC2626", "#FFD700", "#FFFFFF"] 
+            },
+            "shape": {
+                "type": "star", /* Changed to stars */
+                "stroke": {
+                    "width": 0,
+                    "color": "#000000"
+                },
+                "polygon": {
+                    "nb_sides": 5
+                },
+                "image": {
+                    "src": "img/github.svg", 
+                    "width": 100,
+                    "height": 100
+                }
+            },
+            "opacity": {
+                "value": 0.8, /* More visible */
+                "random": true,
+                "anim": {
+                    "enable": true,
+                    "speed": 1,
+                    "opacity_min": 0.1,
+                    "sync": false
+                }
+            },
+            "size": {
+                "value": 5, /* Slightly larger */
+                "random": true,
+                "anim": {
+                    "enable": false,
+                    "speed": 4,
+                    "size_min": 0.3,
+                    "sync": false
+                }
+            },
+            "line_linked": {
+                "enable": false, /* Kept false */
+            },
+            "move": {
+                "enable": true,
+                "speed": 2, /* Slowed down */
+                "direction": "none", /* Random directions */
+                "random": true,
+                "straight": false,
+                "out_mode": "out",
+                "bounce": false,
+                "attract": {
+                    "enable": false,
+                    "rotateX": 600,
+                    "rotateY": 600
+                }
+            }
+        },
+        "interactivity": {
+            "detect_on": "canvas",
+            "events": {
+                "onhover": {
+                    "enable": true, /* Enabled hover bubble */
+                    "mode": "bubble"
+                },
+                "onclick": {
+                    "enable": true, /* Enabled click push */
+                    "mode": "push"
+                },
+                "resize": true
+            },
+            "modes": {
+                "grab": {
+                    "distance": 400,
+                    "line_linked": {
+                        "opacity": 1
+                    }
+                },
+                "bubble": {
+                    "distance": 250,
+                    "size": 8, /* Bubble up size */
+                    "duration": 2,
+                    "opacity": 1,
+                    "speed": 3
+                },
+                "repulse": {
+                    "distance": 400,
+                    "duration": 0.4
+                },
+                "push": {
+                    "particles_nb": 4
+                },
+                "remove": {
+                    "particles_nb": 2
+                }
+            }
+        },
+        "retina_detect": true
+    });
+    </script>
+
+</body></html>
